@@ -1,1 +1,3 @@
-module.exports = require('./lib/electrum_client');
+const ElectrumClient = require('./src/electrum/client')
+
+module.exports = ElectrumClient
