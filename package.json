@@ -1,21 +1,31 @@
 {
-  "name": "electrum-client",
-  "version": "0.0.7",
-  "description": "Electrum protocol client for node.js",
+  "name": "electrum-client-js",
+  "version": "0.1.0",
+  "description": "Electrum protocol client for JS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
-  "dependencies": {},
+  "dependencies": {
+    "websocket": "^1.0.29"
+  },
   "devDependencies": {
-    "electrum-host-parse": "*"
+    "chai": "^4.2.0",
+    "electrum-host-parse": "*",
+    "eslint": "^6.1.0",
+    "eslint-config-google": "^0.13.0",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "mocha": "^6.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/you21979/node-electrum-client.git"
+    "url": "git://github.com/nkuba/electrum-client-js.git"
   },
   "bugs": {
-    "url": "https://github.com/you21979/node-electrum-client/issues"
+    "url": "https://github.com/nkuba/electrum-client-js.git/issues"
   },
   "keywords": [
     "client",
