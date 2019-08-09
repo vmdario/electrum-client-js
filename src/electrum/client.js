@@ -13,23 +13,26 @@ class ElectrumClient extends SocketClient {
 
     this.timeLastCall = 0
 
-    try {
-      // Connect to Electrum Server.
-      await super.connect()
+    if (this.status !== 0) {
+      try {
+        // Connect to Electrum Server.
+        await super.connect()
 
-      // Get banner.
-      const banner = await this.server_banner()
-      console.log(banner)
+        // Get banner.
+        const banner = await this.server_banner()
+        console.log(banner)
 
-      // Negotiate protocol version.
-      if (clientName && electrumProtocolVersion) {
-        await this.server_version(clientName, electrumProtocolVersion)
+        // Negotiate protocol version.
+        if (clientName && electrumProtocolVersion) {
+          const version = await this.server_version(clientName, electrumProtocolVersion)
+          console.log(`Negotiated version: [${version}]`)
+        }
+      } catch (err) {
+        throw new Error(`failed to connect to electrum server: [${err}]`)
       }
-    } catch (err) {
-      throw new Error(`failed to connect to electrum server: [${err}]`)
-    }
 
-    // this.keepAlive()
+      this.keepAlive()
+    }
   }
 
   async request(method, params) {
@@ -56,7 +59,7 @@ class ElectrumClient extends SocketClient {
    * logs an error and closes the connection.
    */
   async keepAlive() {
-    if (!this.closed) {
+    if (this.status !== 0) {
       this.keepAliveHandle = setInterval(
         async (client) => {
           if (this.timeLastCall !== 0 &&
