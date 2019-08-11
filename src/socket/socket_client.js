@@ -12,6 +12,7 @@ class SocketClient {
     this.port = port
     this.protocol = protocol
     this.options = options
+    this.status = 0
     this.callback_message_queue = {}
     this.subscribe = new EventEmitter()
     this.mp = new util.MessageParser((body, n) => {
