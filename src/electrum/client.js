@@ -13,7 +13,7 @@ class ElectrumClient extends SocketClient {
 
     this.timeLastCall = 0
 
-    if (this.status !== 0) {
+    if (this.status === 0) {
       try {
         // Connect to Electrum Server.
         await super.connect()
