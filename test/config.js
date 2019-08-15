@@ -1,6 +1,3 @@
-const https = require('https')
-
-
 const tcp = {
   protocol: 'tcp', port: '50001', host: 'electrumx-server.tbtc.svc.cluster.local',
 }
@@ -15,12 +12,12 @@ const ws = {
 }
 
 const wss = {
-  protocol: 'wss', port: '50004', host: 'electrumx-server.tbtc.svc.cluster.local', options: {agent: new https.Agent({rejectUnauthorized: false})},
+  protocol: 'wss', port: '50004', host: 'electrumx-server.tbtc.svc.cluster.local',
 }
 
 module.exports = [
-  tcp,
+  // tcp,
   ssl,
-  ws,
-  wss,
+  // ws,
+  // wss,
 ]
