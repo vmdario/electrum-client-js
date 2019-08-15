@@ -1,11 +1,11 @@
 /* eslint no-unused-vars: 0 */
 
 const tcp = {
-  protocol: 'tcp', port: '50001', host: 'electrumx-server.tbtc.svc.cluster.local',
+  protocol: 'tcp', port: '50001', host: 'fortress.qtornado.com',
 }
 
 const ssl = {
-  protocol: 'ssl', port: '50002', host: 'testnet1.bauerj.eu',
+  protocol: 'ssl', port: '50002', host: 'fortress.qtornado.com',
 }
 
 
@@ -18,8 +18,9 @@ const wss = {
 }
 
 module.exports = [
-  // tcp,
+  tcp,
   ssl,
+  // WebSocket is commented out for CI, until we find public servers for this protocol.
   // ws,
   // wss,
 ]

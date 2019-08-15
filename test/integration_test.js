@@ -23,7 +23,7 @@ describe('ElectrumClient', async () => {
 
         await client.connect('test_client' + config.protocol, '1.4.2')
           .catch((err) => {
-            console.log(err)
+            console.error(`failed to connect with config [${JSON.stringify(config)}]: [${err}]`)
           })
       })
 
