@@ -1,3 +1,5 @@
+/* eslint no-unused-vars: 0 */
+
 const tcp = {
   protocol: 'tcp', port: '50001', host: 'electrumx-server.tbtc.svc.cluster.local',
 }
