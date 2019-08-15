@@ -37,15 +37,18 @@ class ElectrumClient extends SocketClient {
 
   async request(method, params) {
     if (this.status === 0) {
-      return new Error('connection not established')
+      throw new Error('connection not established')
     }
 
     this.timeLastCall = new Date().getTime()
 
     const response = new Promise((resolve, reject) => {
       const id = ++this.id
+
       const content = util.makeRequest(method, params, id)
+
       this.callback_message_queue[id] = util.createPromiseResult(resolve, reject)
+
       this.client.send(content + '\n')
     })
 
