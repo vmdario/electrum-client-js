@@ -129,10 +129,10 @@ class ElectrumClient extends SocketClient {
   server_addPeer(features) {
     return this.request('server.add_peer', [features])
   }
-  serverDonation_address() {
+  server_donation_address() {
     return this.request('server.donation_address', [])
   }
-  serverPeers_subscribe() {
+  server_peers_subscribe() {
     return this.request('server.peers.subscribe', [])
   }
   blockchain_address_getProof(address) {
