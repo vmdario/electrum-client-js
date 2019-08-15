@@ -14,6 +14,8 @@ class WebSocketClient {
   async connect() {
     const url = `${this.protocol}://${this.host}:${this.port}`
 
+    // TODO: Add docs
+    // https://github.com/theturtle32/WebSocket-Node/blob/master/docs/W3CWebSocket.md#constructor
     const client = new W3CWebSocket(
       url,
       undefined,
