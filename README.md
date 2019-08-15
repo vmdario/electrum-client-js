@@ -2,6 +2,12 @@
 
 Electrum Protocol Client for Node.js
 
+## Continuous Integration
+
+Latest [CircleCI](.circleci/) build status:
+
+[![CircleCI](https://circleci.com/gh/nkuba/electrum-client-js.svg?style=svg)](https://circleci.com/gh/nkuba/electrum-client-js)
+
 ## what is this
 
 https://electrum.org/
@@ -45,5 +51,3 @@ const main = async () => {
 }
 main()
 ```
-
-
