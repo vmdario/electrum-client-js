@@ -1,53 +1,61 @@
-# node-electrum-client
+# electrum-client-js
 
-Electrum Protocol Client for Node.js
+JavaScript implementation of [Electrum Protocol] Client.
+
+This is a library that can communicate with the [ElectrumX Server]
+on `tcp`, `ssl`, `ws` and `wss` protocols. 
+
+Works in node.js and browser.
+
+Implements methods described in [Electrum Protocol methods] documentation.
+
+Subscriptions and notifications are also supported, please see [example](example/subscribe.js).
 
 ## Continuous Integration
 
 Latest [CircleCI](.circleci/) build status:
 
-[![CircleCI](https://circleci.com/gh/nkuba/electrum-client-js.svg?style=svg)](https://circleci.com/gh/nkuba/electrum-client-js)
+[![CircleCI build status](https://circleci.com/gh/nkuba/electrum-client-js.svg?style=svg)](https://circleci.com/gh/nkuba/electrum-client-js)
 
-## what is this
 
-https://electrum.org/
-
-electrum is bitcoin wallet service.  
-This is a library of Node.js that can communicate with the electrum(x) server.  
-
-## install
+## Install
 
 ```
-npm i electrum-client
+npm install --save nkuba/electrum-client-js
 ```
 
-## spec
+## Usage
 
-* TCP / TLS
-* JSON-RPC
-* Subscribe Message
-* High Performance Message
-* no dependency for other library
+```js
+const ElectrumClient = require('electrum-client-js')
 
-## protocol spec
+async function main() {
+  const client = new ElectrumClient(
+    'fortress.qtornado.com',
+    50002,
+    'ssl'
+  )
 
-* https://electrumx.readthedocs.io/en/latest/PROTOCOL.html
+  try {
+    await client.connect(
+      'electrum-client-js', // optional client name
+      '1.4.2' // optional protocol version
+    )
 
-## usage
+    const header = await client.blockchain_headers_subscribe()
+    console.log('Current header:', header)
 
-```
-const ElectrumCli = require('electrum-client')
-const main = async () => {
-    const ecl = new ElectrumCli(995, 'btc.smsys.me', 'tls') // tcp or tls
-    await ecl.connect() // connect(promise)
-    ecl.subscribe.on('blockchain.headers.subscribe', (v) => console.log(v)) // subscribe message(EventEmitter)
-    try{
-        const ver = await ecl.server_version("2.7.11", "1.0") // json-rpc(promise)
-        console.log(ver)
-    }catch(e){
-        console.log(e)
-    }
-    await ecl.close() // disconnect(promise)
+    await client.close()
+  } catch (err) {
+    console.error(err)
+  }
 }
+
 main()
 ```
+See more [examples](example/).
+
+
+[Electrum Protocol]: https://electrumx.readthedocs.io/en/latest/protocol.html
+[Electrum Protocol methods]: https://electrumx.readthedocs.io/en/latest/protocol-methods.html
+[ElectrumX Server]: https://electrumx.readthedocs.io/en/latest/
