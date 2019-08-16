@@ -5,7 +5,7 @@ const assert = chai.assert
 
 const fs = require('fs')
 
-const configs = require('./config')
+const config = require('./config')
 
 describe('ElectrumClient', async () => {
   let txData
@@ -15,15 +15,22 @@ describe('ElectrumClient', async () => {
   })
 
   describe('for all protocols', async () => {
-    configs.forEach((config) => {
+    config.serversArray.forEach((server) => {
       let client
 
       before(async () => {
-        client = new ElectrumClient(config.host, config.port, config.protocol, config.options)
+        client = new ElectrumClient(
+          server.host,
+          server.port,
+          server.protocol,
+          server.options
+        )
 
-        await client.connect('test_client' + config.protocol, '1.4.2')
+        await client.connect('test_client' + server.protocol, '1.4.2')
           .catch((err) => {
-            console.error(`failed to connect with config [${JSON.stringify(config)}]: [${err}]`)
+            console.error(
+              `failed to connect with config [${JSON.stringify(server)}]: [${err}]`
+            )
           })
       })
 
@@ -46,9 +53,14 @@ describe('ElectrumClient', async () => {
 
   describe('when not connected', async () => {
     before(async () => {
-      const config = configs[0]
+      const server = config.electrumServers.tcp
 
-      client = new ElectrumClient(config.host, config.port, config.protocol, config.options)
+      client = new ElectrumClient(
+        server.host,
+        server.port,
+        server.protocol,
+        server.options
+      )
     })
 
     it('request throws error', async () => {
