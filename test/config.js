@@ -1,6 +1,4 @@
-/* eslint no-unused-vars: 0 */
-
-const electrumServers = {
+const servers = {
   tcp: {
     protocol: 'tcp', port: '50001', host: 'fortress.qtornado.com',
   },
@@ -16,14 +14,14 @@ const electrumServers = {
 }
 
 const serversArray = [
-  electrumServers.tcp,
-  electrumServers.ssl,
+  servers.tcp,
+  servers.ssl,
   // TODO: WebSocket is commented out for CI, until we find public servers for this protocol.
   // electrumServers.ws,
   // electrumServers.wss,
 ]
 
 module.exports = {
-  electrumServers,
+  servers,
   serversArray,
 }

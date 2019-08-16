@@ -53,7 +53,7 @@ describe('ElectrumClient', async () => {
 
   describe('when not connected', async () => {
     before(async () => {
-      const server = config.electrumServers.tcp
+      const server = config.servers.tcp
 
       client = new ElectrumClient(
         server.host,
