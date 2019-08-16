@@ -117,6 +117,10 @@ class ElectrumClient extends SocketClient {
   // }
 
   // ElectrumX API
+  //
+  // Documentation:
+  // https://electrumx.readthedocs.io/en/latest/protocol-methods.html
+  //
   server_version(client_name, protocol_version) {
     return this.request('server.version', [client_name, protocol_version])
   }
@@ -131,6 +135,9 @@ class ElectrumClient extends SocketClient {
   }
   server_donation_address() {
     return this.request('server.donation_address', [])
+  }
+  server_features() {
+    return this.request('server.features', [])
   }
   server_peers_subscribe() {
     return this.request('server.peers.subscribe', [])
