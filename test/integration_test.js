@@ -32,12 +32,12 @@ describe('ElectrumClient', async () => {
       })
 
       it('request returns result', async () => {
-        const expoectedResult = txData.hex
+        const expectedResult = txData.hex
         const result = await client.blockchain_transaction_get(txData.hash)
 
         assert.equal(
           result,
-          expoectedResult,
+          expectedResult,
           'unexpected result',
         )
       })
