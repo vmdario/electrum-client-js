@@ -1,24 +1,31 @@
-const ElectrumClient = require("..")
+const ElectrumClient = require('..')
 
-
-const peers = require('electrum-host-parse').getDefaultPeers("BitcoinSegwit").filter(v => v.ssl)
-const getRandomPeer = () => peers[peers.length * Math.random() | 0]
+const config = {
+  host: 'fortress.qtornado.com',
+  port: 50002,
+  protocol: 'ssl',
+}
 
 const main = async () => {
-    const peer = getRandomPeer()
-    console.log('begin connection: ' + JSON.stringify(peer))
-    const ecl = new ElectrumClient(peer.ssl, peer.host, 'ssl')
-    await ecl.connect()
-    try{
-        const ver = await ecl.server_version("2.7.11", "1.0")
-        console.log(ver)
-        const balance = await ecl.blockchainAddress_getBalance("12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX")
-        console.log(balance)
-        const unspent = await ecl.blockchainAddress_listunspent("12c6DSiU4Rq3P4ZxziKxzrL5LmMBrzjrJX")
-        console.log(unspent)
-    }catch(e){
-        console.log(e)
-    }
-    await ecl.close()
+  console.log('Connecting...')
+  const client = new ElectrumClient(config.host, config.port, config.protocol)
+
+  await client.connect()
+
+  try {
+    const ver = await client.server_version('electrum-client-js', '1.4')
+    console.log('Negotiated version:', ver)
+
+    const balance = await client.blockchain_scripthash_getBalance('740485f380ff6379d11ef6fe7d7cdd68aea7f8bd0d953d9fdf3531fb7d531833')
+    console.log('Balance:', balance)
+
+    const unspent = await client.blockchain_scripthash_listunspent('740485f380ff6379d11ef6fe7d7cdd68aea7f8bd0d953d9fdf3531fb7d531833')
+    console.log('Unspent:', unspent)
+  } catch (e) {
+    console.error(e)
+  }
+
+  await client.close()
 }
-main().catch(console.log)
+
+main().catch(console.error)
