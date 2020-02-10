@@ -15,19 +15,19 @@ Subscriptions and notifications are also supported, please see [example](example
 
 Latest [CircleCI](.circleci/) build status:
 
-[![CircleCI build status](https://circleci.com/gh/nkuba/electrum-client-js.svg?style=svg)](https://circleci.com/gh/nkuba/electrum-client-js)
+[![CircleCI](https://circleci.com/gh/keep-network/electrum-client-js.svg?style=svg)](https://circleci.com/gh/keep-network/electrum-client-js)
 
 
 ## Install
 
 ```
-npm install --save nkuba/electrum-client-js
+npm install --save @keep-network/electrum-client-js
 ```
 
 ## Usage
 
 ```js
-const ElectrumClient = require('electrum-client-js')
+const ElectrumClient = require('@keep-network/electrum-client-js')
 
 async function main() {
   const client = new ElectrumClient(
