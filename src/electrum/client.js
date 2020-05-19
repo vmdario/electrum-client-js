@@ -95,7 +95,7 @@ class ElectrumClient extends SocketClient {
     ]
 
     // TODO: We should probably leave listeners if the have persistency policy.
-    list.forEach((event) => this.subscribe.removeAllListeners(event))
+    list.forEach((event) => this.events.removeAllListeners(event))
 
     // Stop keep alive.
     clearInterval(this.keepAliveHandle)
