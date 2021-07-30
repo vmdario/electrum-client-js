@@ -1,9 +1,9 @@
 const servers = {
   tcp: {
-    protocol: 'tcp', port: '50001', host: 'fortress.qtornado.com',
+    protocol: 'tcp', port: '50001', host: 'electrum.bitaroo.net',
   },
   ssl: {
-    protocol: 'ssl', port: '50002', host: 'fortress.qtornado.com',
+    protocol: 'ssl', port: '50002', host: 'electrum.bitaroo.net',
   },
   ws: {
     protocol: 'ws', port: '50003', host: 'electrumx-server.tbtc.svc.cluster.local',
@@ -15,8 +15,10 @@ const servers = {
 
 const serversArray = [
   servers.tcp,
-  servers.ssl,
-  // TODO: WebSocket is commented out for CI, until we find public servers for this protocol.
+  // FIXME: SSL is commented out for CI, as it seems not working with available
+  // public servers.
+  // servers.ssl,
+  // FIXME: WebSocket is commented out for CI, until we find public servers for this protocol.
   // electrumServers.ws,
   // electrumServers.wss,
 ]
