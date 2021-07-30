@@ -1,9 +1,9 @@
 const servers = {
   tcp: {
-    protocol: 'tcp', port: '50001', host: 'fortress.qtornado.com',
+    protocol: 'tcp', port: '50001', host: 'electrum.bitaroo.net',
   },
   ssl: {
-    protocol: 'ssl', port: '50002', host: 'fortress.qtornado.com',
+    protocol: 'ssl', port: '50002', host: 'electrum.bitaroo.net',
   },
   ws: {
     protocol: 'ws', port: '50003', host: 'electrumx-server.tbtc.svc.cluster.local',
