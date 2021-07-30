@@ -15,8 +15,10 @@ const servers = {
 
 const serversArray = [
   servers.tcp,
-  servers.ssl,
-  // TODO: WebSocket is commented out for CI, until we find public servers for this protocol.
+  // FIXME: SSL is commented out for CI, as it seems not working with available
+  // public servers.
+  // servers.ssl,
+  // FIXME: WebSocket is commented out for CI, until we find public servers for this protocol.
   // electrumServers.ws,
   // electrumServers.wss,
 ]
