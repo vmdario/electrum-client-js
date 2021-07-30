@@ -13,10 +13,9 @@ Subscriptions and notifications are also supported, please see [example](example
 
 ## Continuous Integration
 
-Latest [CircleCI](.circleci/) build status:
+Latest build status:
 
-[![CircleCI](https://circleci.com/gh/keep-network/electrum-client-js.svg?style=svg)](https://circleci.com/gh/keep-network/electrum-client-js)
-
+[![Node.js](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml/badge.svg)](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml)
 
 ## Install
 
