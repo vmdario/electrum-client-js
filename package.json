@@ -1,6 +1,6 @@
 {
   "name": "@keep-network/electrum-client-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Electrum protocol client for node.js and browser",
   "main": "index.js",
   "scripts": {
