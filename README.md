@@ -14,8 +14,7 @@ Subscriptions and notifications are also supported, please see [example](example
 ## Continuous Integration
 
 Latest build status:
-
-[![Node.js](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml/badge.svg)](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml)
+[![CI](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml/badge.svg?branch=main)](https://github.com/keep-network/electrum-client-js/actions/workflows/node.yml)
 
 ## Install
 
