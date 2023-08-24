@@ -3,10 +3,10 @@ const sleep = (ms) => new Promise((resolve, _) => setTimeout(() => resolve(), ms
 
 const main = async () => {
   try {
-    const ecl = new ElectrumClient('fortress.qtornado.com', 50002, 'tls')
+    const ecl = new ElectrumClient('electrum.bitaroo.net', 50002, 'tls')
 
-    ecl.subscribe.on('blockchain.headers.subscribe', console.log)
-    ecl.subscribe.on('blockchain.scripthash.subscribe', console.log)
+    ecl.events.on('blockchain.headers.subscribe', console.log)
+    ecl.events.on('blockchain.scripthash.subscribe', console.log)
 
     await ecl.connect()
 
